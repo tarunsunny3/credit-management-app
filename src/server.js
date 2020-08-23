@@ -95,7 +95,7 @@ app.post("/user/transfer", async (req, res) => {
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
-const port = process.env.PORT || 5000;
-app.listen(port, (req, res) => {
-  console.log("Server started on port " + port);
+
+app.listen(process.env.PORT || 5000, (req, res) => {
+  console.log("Server started successfully");
 });
