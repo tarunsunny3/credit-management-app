@@ -6,8 +6,6 @@ const path = require("path");
 const app = express();
 const User = require("./models/User");
 
-app.use(express.static(path.join(__dirname, "build")));
-
 app.use(bodyParser.json());
 const mongoURI = process.env.MONGODB_URI;
 mongoose
@@ -92,6 +90,9 @@ app.post("/user/transfer", async (req, res) => {
     }
   }
 });
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "build")));
+}
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
