@@ -92,10 +92,10 @@ app.post("/user/transfer", async (req, res) => {
     }
   }
 });
-app.get("/*", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-app.listen(process.env.PORT || 5000, "0.0.0.0", (req, res) => {
+app.listen(process.env.PORT || 5000, (req, res) => {
   console.log("Server started successfully");
 });
